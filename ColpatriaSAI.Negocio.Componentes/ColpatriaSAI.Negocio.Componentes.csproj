@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6D07AB2F-83FA-46F4-9FF6-0450305256BB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ColpatriaSAI.Negocio.Componentes</RootNamespace>
+    <AssemblyName>ColpatriaSAI.Negocio.Componentes</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Pruebas|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Pruebas\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\ColpatriaSAI.Negocio.Componentes.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LinqToExcel">
+      <HintPath>..\Librerias\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\Librerias\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database">
+      <HintPath>..\Librerias\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\Librerias\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_32\Microsoft.SqlServer.DTSRuntimeWrap\10.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSRuntimeWrap.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\Librerias\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Channels" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administracion.cs" />
+    <Compile Include="Admin\ActividadEconomicas.cs" />
+    <Compile Include="Admin\AntiguedadxNiveles.cs" />
+    <Compile Include="Admin\BaseMonedas.cs" />
+    <Compile Include="Admin\BasexParticipantes.cs" />
+    <Compile Include="Admin\Canales.cs" />
+    <Compile Include="Admin\Categorias.cs" />
+    <Compile Include="Admin\Compañias.cs" />
+    <Compile Include="Admin\AuditoriaModulos.cs" />
+    <Compile Include="Admin\Dashboard.cs" />
+    <Compile Include="Admin\EjecucionPresupuesto.cs" />
+    <Compile Include="Admin\IngresoLocalidades.cs" />
+    <Compile Include="Admin\MetasNodos.cs" />
+    <Compile Include="Admin\EscalaNotas.cs" />
+    <Compile Include="Admin\Excepciones.cs" />
+    <Compile Include="Admin\ExcepcionesJerarquia.cs" />
+    <Compile Include="Admin\FactorVariables.cs" />
+    <Compile Include="Admin\FactorxNotas.cs" />
+    <Compile Include="Admin\Franquicias.cs" />
+    <Compile Include="Admin\GrupoEndosos.cs" />
+    <Compile Include="Admin\GrupoTipoEndosos.cs" />
+    <Compile Include="Admin\Integracion.cs" />
+    <Compile Include="Admin\Jerarquias.cs" />
+    <Compile Include="Admin\LiquidacionMonedas.cs" />
+    <Compile Include="Admin\Localidades.cs" />
+    <Compile Include="Admin\Monedas.cs" />
+    <Compile Include="Admin\Nivel.cs" />
+    <Compile Include="Admin\ParametrizacionCambioClaveS.cs" />
+    <Compile Include="Admin\ParametrizacionEficienciaARLS.cs" />
+    <Compile Include="Admin\Parametros.cs" />
+    <Compile Include="Admin\Participantes.cs" />
+    <Compile Include="Admin\PeriodosCierre.cs" />
+    <Compile Include="Admin\PersistenciaCAPI.cs" />
+    <Compile Include="Admin\PremioAnterior.cs" />
+    <Compile Include="Admin\Redes.cs" />
+    <Compile Include="Admin\SalariosMinimos.cs" />
+    <Compile Include="Admin\Segmentos.cs" />
+    <Compile Include="Admin\SiteMap.cs" />
+    <Compile Include="Admin\TipoEndosos.cs" />
+    <Compile Include="Admin\TipoEscalas.cs" />
+    <Compile Include="Admin\TipoMedidas.cs" />
+    <Compile Include="Admin\TiposContratos.cs" />
+    <Compile Include="Admin\TipoVehiculo.cs" />
+    <Compile Include="Admin\Zonas.cs" />
+    <Compile Include="Ajustes\AjustesConcursos.cs" />
+    <Compile Include="Ajustes\AjustesContratos.cs" />
+    <Compile Include="Ajustes\AjustesFranquicias.cs" />
+    <Compile Include="Cargue\LogCargues.cs" />
+    <Compile Include="Comision\Administracion\AdminComision.cs" />
+    <Compile Include="Comision\Administracion\Administracion.cs" />
+    <Compile Include="Comision\Administracion\IAdminComision.cs" />
+    <Compile Include="Comision\Administracion\Modelos.cs" />
+    <Compile Include="Comision\Calculos\CalculosNetos.cs" />
+    <Compile Include="Comision\Calculos\CalculosTalentos.cs" />
+    <Compile Include="Comision\Comisiones.cs" />
+    <Compile Include="Comision\Calculos\Calculos.cs" />
+    <Compile Include="Comision\Calculos\CalculosRepository.cs" />
+    <Compile Include="Comision\Calculos\ICalculos.cs" />
+    <Compile Include="Comision\Calculos\ResultadosCalculos.cs" />
+    <Compile Include="Comision\Consultas\BitacoraCalculo.cs" />
+    <Compile Include="Comision\Consultas\IBitacoraCalculo.cs" />
+    <Compile Include="Comision\Consultas\ModeloConsultas.cs" />
+    <Compile Include="Comision\Consultas\Tablero.cs" />
+    <Compile Include="Comision\Fija\FactorComisionFija.cs" />
+    <Compile Include="Comision\Modelo\Excepciones\ExcepcionFijaVariable.cs" />
+    <Compile Include="Comision\Modelo\Excepciones\ExcepcionPenalizacion.cs" />
+    <Compile Include="Comision\Modelo\IModeloComision.cs" />
+    <Compile Include="Comision\ManejoError.cs" />
+    <Compile Include="Comision\Modelo\LiquidacionComisionClass.cs" />
+    <Compile Include="Comision\Modelo\Modelo.cs" />
+    <Compile Include="Comision\Modelo\ModeloComision.cs" />
+    <Compile Include="Comision\Procesos\Extraccion\LogBH.cs" />
+    <Compile Include="Comision\Procesos\Extraccion\Proceso.cs" />
+    <Compile Include="Comision\Reportes\IReportes.cs" />
+    <Compile Include="Comision\Reportes\ReportsBH.cs" />
+    <Compile Include="Comision\Reportes\ReporteAsesores.cs" />
+    <Compile Include="Comision\Reportes\ReportsBHClass.cs" />
+    <Compile Include="Comision\Reportes\ReporteAsesoresClass.cs" />
+    <Compile Include="Comision\Reportes\ReporteBeneficiario.cs" />
+    <Compile Include="Comision\Reportes\ReporteBeneficiarioClass.cs" />
+    <Compile Include="Comision\Reportes\ReporteDetalleBeneficiarios.cs" />
+    <Compile Include="Comision\Reportes\ReporteDetalleBeneficiariosClass.cs" />
+    <Compile Include="Comision\Reportes\Reportes.cs" />
+    <Compile Include="Comision\Reportes\ReporteTransferencia.cs" />
+    <Compile Include="Comision\Reportes\ReporteTrasnferenciasClass.cs" />
+    <Compile Include="Comision\Variable\CalculoComisionVariable.cs" />
+    <Compile Include="Comision\Variable\FactorNeto.cs" />
+    <Compile Include="Comision\Variable\FactorNuevo.cs" />
+    <Compile Include="Comision\Variable\Matriz.cs" />
+    <Compile Include="Concursos\CategoriasxRegla.cs" />
+    <Compile Include="Concursos\CompaniaxEtapas.cs" />
+    <Compile Include="Concursos\Concurso.cs" />
+    <Compile Include="Concursos\EtapaConcursos.cs" />
+    <Compile Include="Concursos\LiquidacionConcurso.cs" />
+    <Compile Include="Concursos\MonedaConcursos.cs" />
+    <Compile Include="Concursos\ParticipanteConcursos.cs" />
+    <Compile Include="Concursos\ProductoConcursos.cs" />
+    <Compile Include="Concursos\Reglas.cs" />
+    <Compile Include="Concursos\Variables.cs" />
+    <Compile Include="Admin\Combos.cs" />
+    <Compile Include="Connected Services\PackagesExecutionService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Contratacion\LiquidacionContrats.cs" />
+    <Compile Include="Contratacion\Metas.cs" />
+    <Compile Include="Contratacion\Modelos.cs" />
+    <Compile Include="Contratacion\Participaciones.cs" />
+    <Compile Include="Contratacion\Presupuestos.cs" />
+    <Compile Include="EF2Javascript.cs" />
+    <Compile Include="Estadisticas\EstadisticasPrimas.cs" />
+    <Compile Include="Estadisticas\EstadisticasRecaudos.cs" />
+    <Compile Include="ETLs\ETLsRemotas.cs" />
+    <Compile Include="ETLs\TiposETLRemota.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="IAdministracion.cs" />
+    <Compile Include="Comision\IComisiones.cs" />
+    <Compile Include="LiqFranquicias\AnticiposFranquicias.cs" />
+    <Compile Include="LiqFranquicias\LiquidacionFranquicias.cs" />
+    <Compile Include="ProcesoAutomatico\AUT.cs" />
+    <Compile Include="Produccion\Beneficiarios.cs" />
+    <Compile Include="Produccion\Negocio.cs" />
+    <Compile Include="Productos\Amparos.cs" />
+    <Compile Include="Productos\Coberturas.cs" />
+    <Compile Include="Productos\LineaNegocios.cs" />
+    <Compile Include="Productos\Planes.cs" />
+    <Compile Include="Productos\Productos.cs" />
+    <Compile Include="Productos\Ramos.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad\Rol.cs" />
+    <Compile Include="Seguridad\Usuario.cs" />
+    <Compile Include="Utilidades\Auditoria.cs" />
+    <Compile Include="Utilidades\FtpUtil.cs" />
+    <Compile Include="Utilidades\LoggingUtil.cs" />
+    <Compile Include="Utilidades\Proceso.cs" />
+    <Compile Include="Utilidades\Result.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ColpatriaSAI.Datos\ColpatriaSAI.Datos.csproj">
+      <Project>{902940DF-C5CF-401C-B547-FFC0B1C2A72B}</Project>
+      <Name>ColpatriaSAI.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ColpatriaSAI.Negocio.Entidades\ColpatriaSAI.Negocio.Entidades.csproj">
+      <Project>{DD71E31F-7455-4952-82CA-3CDDFE35DA7F}</Project>
+      <Name>ColpatriaSAI.Negocio.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ColpatriaSAI.Negocio.Validadores\ColpatriaSAI.Negocio.Validadores.csproj">
+      <Project>{5921D462-C851-4292-854B-DDE73E6F8473}</Project>
+      <Name>ColpatriaSAI.Negocio.Validadores</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\PackagesExecutionService\ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService.wsdl" />
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\PackagesExecutionService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PackagesExecutionService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PackagesExecutionService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PackagesExecutionService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

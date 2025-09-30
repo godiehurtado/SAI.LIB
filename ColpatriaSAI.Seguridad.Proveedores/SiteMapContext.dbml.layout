@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SiteMapContex">
+  <DataContextMoniker Name="/SiteMapContextDataContext" />
+  <nestedChildShapes>
+    <classShape Id="194e1978-9bfc-4cfd-b03c-1a292c07f25a" absoluteBounds="3.125, 1.625, 2, 2.24658447265625">
+      <DataClassMoniker Name="/SiteMapContextDataContext/SITEMAP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="93be91c6-1c69-4742-9bdb-ad806e910791" absoluteBounds="3.14, 2.085, 1.9700000000000002, 1.68658447265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,28 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ColpatriaSAI.Seguridad.Proveedores.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ColpatriaSAI_Seguridad_Proveedores_MembershipProvider_MembershipProvider" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Autenticacion/MembershipProvider.asmx</Value>
+    </Setting>
+    <Setting Name="ColpatriaSAI_Seguridad_Proveedores_RoleProvider_RoleProvider" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Autenticacion/RoleProvider.asmx</Value>
+    </Setting>
+    <Setting Name="LocalSqlServer" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\DB.mdf;Integrated Security=True;User Instance=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\DB.mdf;Integrated Security=True;User Instance=True</Value>
+    </Setting>
+    <Setting Name="SAIConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=DC2TVDSQL2\SQL2016,56067;Initial Catalog=SAI;Persist Security Info=True;User ID=sai_admin;Password=7kYWAZj7No-aN7S&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=DC2TVDSQL2\SQL2016,56067;Initial Catalog=SAI;Persist Security Info=True;User ID=sai_admin;Password=7kYWAZj7No-aN7S</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

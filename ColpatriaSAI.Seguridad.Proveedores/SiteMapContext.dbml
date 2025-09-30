@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SAI" Class="SiteMapContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DC2TVDSQL2\SQL2016,56067;Initial Catalog=SAI;Persist Security Info=True;User ID=sai_admin" SettingsObjectName="ColpatriaSAI.Seguridad.Proveedores.Properties.Settings" SettingsPropertyName="SAIConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.SITEMAP" Member="SITEMAPs">
+    <Type Name="SITEMAP">
+      <Column Name="ID" Type="System.String" DbType="NVarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TITLE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CONTROLLER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ACTION" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PARAMID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PARENT_ID" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLES" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
