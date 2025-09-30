@@ -2143,6 +2143,7 @@ namespace ColpatriaSAI.Negocio.Componentes
         [OperationContract] int ActualizarEstadoPeriodoCierre(int idPeriodo, int idEstado, string Username);
 
         [OperationContract] int SPPeriodoCierre(int companiaId, int mesCierre, int anioCierre);
+        [OperationContract] int CerrarMesAbierto(int companiaId, int mesCierre, int anioCierre);
 
         [OperationContract] int DeleteReprocesos(int mesCierre, int añoCierre);
 

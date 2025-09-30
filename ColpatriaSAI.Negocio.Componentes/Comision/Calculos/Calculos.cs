@@ -165,6 +165,15 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
             return new Talentos.CalculosRepository().ValidarUltimaExtraccion();
         }
 
+        /// <summary>
+        /// 2024-04-16 DAHG: Método para consultar el histórico de extracciones
+        /// </summary>
+        /// <returns></returns>
+        public List<ExtraccionComision> ConsultarHistoricoExtraccion()
+        {
+            return new Talentos.CalculosRepository().ConsultarHistoricoExtraccion();
+        }
+
 
 
         /// <summary>
@@ -200,12 +209,17 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
         }
 
 
-        public ResultadoOperacionBD ReprocesarLiquidacion(Dictionary<string, object> parametrosEtlCF, Dictionary<string, object> parametrosEtlCV, Dictionary<string, object> parametrosEtlAnulacion, int modeloId, short anio, byte mes, int liquidacionComisionId, byte tipoLiquidacionId, string usuario, int tipoEjec, InfoAplicacion info)
+        //public ResultadoOperacionBD ReprocesarLiquidacion(Dictionary<string, object> parametrosEtlCF, Dictionary<string, object> parametrosEtlCV, Dictionary<string, object> parametrosEtlAnulacion, int modeloId, short anio, byte mes, int liquidacionComisionId, byte tipoLiquidacionId, string usuario, int tipoEjec, InfoAplicacion info)
+        //{
+        //    AppSettingsReader reader = new AppSettingsReader();
+        //    string idApp = reader.GetValue("idPackagesExecutionService", String.Empty.GetType()).ToString();
+        //    return new Talentos.CalculosRepository().ReprocesarLiquidacion(idApp, parametrosEtlCF, parametrosEtlCV, parametrosEtlAnulacion, modeloId, anio, mes, liquidacionComisionId, tipoLiquidacionId, usuario, tipoEjec, info);
+        //}
+
+        public ResultadoOperacionBD ReprocesarLiquidacion(int idLiquidacion)
         {
-            AppSettingsReader reader = new AppSettingsReader();
-            string idApp = reader.GetValue("idPackagesExecutionService", String.Empty.GetType()).ToString();
-            return new Talentos.CalculosRepository().ReprocesarLiquidacion(idApp, parametrosEtlCF, parametrosEtlCV, parametrosEtlAnulacion, modeloId, anio, mes, liquidacionComisionId, tipoLiquidacionId, usuario, tipoEjec, info);
-         }
+            return new Talentos.CalculosRepository().ReprocesarLiquidacion(idLiquidacion);
+        }
 
 
         public ResultadoOperacionBD ActualizaEstadoReprocesar(int idLiquidacion)

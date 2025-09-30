@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="C+waVuFZETOS7sCCv7q2Uvkjt+ew517qq1tWKS9N9mE=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="IuGg95Nn2Ntg6qtnoSM0KGAaMn2J/+3ZcSB1iDJZEro=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IPackagesExecutionService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IPackagesExecutionService" contract="PackagesExecutionService.IPackagesExecutionService" bindingType="basicHttpBinding" address="http://dc2tvdetl1:3078/PackagesExecutionService.svc" bindingConfiguration="BasicHttpBinding_IPackagesExecutionService">
+    <endpoint name="BasicHttpBinding_IPackagesExecutionService" contract="PackagesExecutionService.IPackagesExecutionService" bindingType="basicHttpBinding" address="http://localhost:65522/PackagesExecutionService.svc" bindingConfiguration="BasicHttpBinding_IPackagesExecutionService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://dc2tvdetl1:3078/PackagesExecutionService.svc</serializedValue>
+          <serializedValue>http://localhost:65522/PackagesExecutionService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

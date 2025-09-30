@@ -58,9 +58,24 @@ namespace ColpatriaSAI.Negocio.Entidades
         }
         private string _nombre;
 
+        [DataMember]
+        public string CodigoCore
+        {
+            get { return _codigoCore; }
+            set
+            {
+                if (_codigoCore != value)
+                {
+                    _codigoCore = value;
+                    OnPropertyChanged("Nombre");
+                }
+            }
+        }
+        private string _codigoCore;
+
         #endregion
         #region Navigation Properties
-    
+
         [DataMember]
         public TrackableCollection<Participante> Participantes
         {

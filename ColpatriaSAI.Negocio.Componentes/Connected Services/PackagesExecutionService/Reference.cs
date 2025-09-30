@@ -17,9 +17,9 @@ namespace ColpatriaSAI.Negocio.Componentes.PackagesExecutionService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Variable", Namespace="http://schemas.datacontract.org/2004/07/WcfPackagesExecution")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     public partial class Variable : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -149,6 +149,14 @@ namespace ColpatriaSAI.Negocio.Componentes.PackagesExecutionService {
         System.IAsyncResult BeginExecuteFromPackageFile(string idApp, string packageFileName, string packageConfigFileName, ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[] variables, System.AsyncCallback callback, object asyncState);
         
         ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse EndExecuteFromPackageFile(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPackagesExecutionService/ExecuteFromCatalog", ReplyAction="http://tempuri.org/IPackagesExecutionService/ExecuteFromCatalogResponse")]
+        ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse ExecuteFromCatalog(string idApp, string packageFileName, string projectName, ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[] variables);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IPackagesExecutionService/ExecuteFromCatalog", ReplyAction="http://tempuri.org/IPackagesExecutionService/ExecuteFromCatalogResponse")]
+        System.IAsyncResult BeginExecuteFromCatalog(string idApp, string packageFileName, string projectName, ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[] variables, System.AsyncCallback callback, object asyncState);
+        
+        ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse EndExecuteFromCatalog(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -176,6 +184,25 @@ namespace ColpatriaSAI.Negocio.Componentes.PackagesExecutionService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ExecuteFromCatalogCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ExecuteFromCatalogCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class PackagesExecutionServiceClient : System.ServiceModel.ClientBase<ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.IPackagesExecutionService>, ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.IPackagesExecutionService {
         
         private BeginOperationDelegate onBeginExecuteFromPackageFileDelegate;
@@ -183,6 +210,12 @@ namespace ColpatriaSAI.Negocio.Componentes.PackagesExecutionService {
         private EndOperationDelegate onEndExecuteFromPackageFileDelegate;
         
         private System.Threading.SendOrPostCallback onExecuteFromPackageFileCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginExecuteFromCatalogDelegate;
+        
+        private EndOperationDelegate onEndExecuteFromCatalogDelegate;
+        
+        private System.Threading.SendOrPostCallback onExecuteFromCatalogCompletedDelegate;
         
         public PackagesExecutionServiceClient() {
         }
@@ -204,6 +237,8 @@ namespace ColpatriaSAI.Negocio.Componentes.PackagesExecutionService {
         }
         
         public event System.EventHandler<ExecuteFromPackageFileCompletedEventArgs> ExecuteFromPackageFileCompleted;
+        
+        public event System.EventHandler<ExecuteFromCatalogCompletedEventArgs> ExecuteFromCatalogCompleted;
         
         public ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse ExecuteFromPackageFile(string idApp, string packageFileName, string packageConfigFileName, ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[] variables) {
             return base.Channel.ExecuteFromPackageFile(idApp, packageFileName, packageConfigFileName, variables);
@@ -259,6 +294,62 @@ namespace ColpatriaSAI.Negocio.Componentes.PackagesExecutionService {
                         packageFileName,
                         packageConfigFileName,
                         variables}, this.onEndExecuteFromPackageFileDelegate, this.onExecuteFromPackageFileCompletedDelegate, userState);
+        }
+        
+        public ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse ExecuteFromCatalog(string idApp, string packageFileName, string projectName, ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[] variables) {
+            return base.Channel.ExecuteFromCatalog(idApp, packageFileName, projectName, variables);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginExecuteFromCatalog(string idApp, string packageFileName, string projectName, ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[] variables, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginExecuteFromCatalog(idApp, packageFileName, projectName, variables, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse EndExecuteFromCatalog(System.IAsyncResult result) {
+            return base.Channel.EndExecuteFromCatalog(result);
+        }
+        
+        private System.IAsyncResult OnBeginExecuteFromCatalog(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string idApp = ((string)(inValues[0]));
+            string packageFileName = ((string)(inValues[1]));
+            string projectName = ((string)(inValues[2]));
+            ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[] variables = ((ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[])(inValues[3]));
+            return this.BeginExecuteFromCatalog(idApp, packageFileName, projectName, variables, callback, asyncState);
+        }
+        
+        private object[] OnEndExecuteFromCatalog(System.IAsyncResult result) {
+            ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse retVal = this.EndExecuteFromCatalog(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnExecuteFromCatalogCompleted(object state) {
+            if ((this.ExecuteFromCatalogCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ExecuteFromCatalogCompleted(this, new ExecuteFromCatalogCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ExecuteFromCatalogAsync(string idApp, string packageFileName, string projectName, ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[] variables) {
+            this.ExecuteFromCatalogAsync(idApp, packageFileName, projectName, variables, null);
+        }
+        
+        public void ExecuteFromCatalogAsync(string idApp, string packageFileName, string projectName, ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.Variable[] variables, object userState) {
+            if ((this.onBeginExecuteFromCatalogDelegate == null)) {
+                this.onBeginExecuteFromCatalogDelegate = new BeginOperationDelegate(this.OnBeginExecuteFromCatalog);
+            }
+            if ((this.onEndExecuteFromCatalogDelegate == null)) {
+                this.onEndExecuteFromCatalogDelegate = new EndOperationDelegate(this.OnEndExecuteFromCatalog);
+            }
+            if ((this.onExecuteFromCatalogCompletedDelegate == null)) {
+                this.onExecuteFromCatalogCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnExecuteFromCatalogCompleted);
+            }
+            base.InvokeAsync(this.onBeginExecuteFromCatalogDelegate, new object[] {
+                        idApp,
+                        packageFileName,
+                        projectName,
+                        variables}, this.onEndExecuteFromCatalogDelegate, this.onExecuteFromCatalogCompletedDelegate, userState);
         }
     }
 }

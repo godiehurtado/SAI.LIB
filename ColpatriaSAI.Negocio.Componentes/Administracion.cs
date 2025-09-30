@@ -4424,6 +4424,13 @@ namespace ColpatriaSAI.Negocio.Componentes
             return _periodos.SPPeriodoCierre(companiaId, mesCierre, anioCierre);
         }
 
+        public int CerrarMesAbierto(int companiaId, int mesCierre, int anioCierre)
+        {
+            var _periodos = new PeriodosCierre();
+
+            return _periodos.CerrarMesAbierto(companiaId, mesCierre, anioCierre);
+        }
+
         public int DeleteReprocesos(int mesCierre, int añoCierre)
         {
             var _reprocesos = new PeriodosCierre();

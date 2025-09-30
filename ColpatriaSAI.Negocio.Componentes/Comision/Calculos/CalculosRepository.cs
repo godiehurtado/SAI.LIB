@@ -615,7 +615,7 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
 
                     using (PackagesExecutionServiceClient client = new PackagesExecutionServiceClient())
                     {
-                        client.BeginExecuteFromPackageFile(idApp, eTLRemota.packageFileName, eTLRemota.packageConfigFileName, variablesCF.ToArray(), GetDataCallback_ExtraccionesCF,client);
+                        client.BeginExecuteFromCatalog(idApp, eTLRemota.packageFileName, eTLRemota.projectName, variablesCF.ToArray(), GetDataCallback_ExtraccionesCF, client);
                     }
 
                     #endregion
@@ -681,7 +681,7 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
                 res.RegistrosAfectados = 0;
                 res.MensajeError = "Error: " + ex.Message;
                 res.Resultado = ResultadoOperacion.Error;
-                if(idProcesoCF > 0)
+                if (idProcesoCF > 0)
                     Proceso.eliminarProceso(idProcesoCF);
                 if (idProcesoCV > 0)
                     Proceso.eliminarProceso(idProcesoCV);
@@ -696,7 +696,7 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
             {
                 PackagesExecutionServiceClient client = (PackagesExecutionServiceClient)asyncResult.AsyncState;
 
-                DTSResponse result = client.EndExecuteFromPackageFile(asyncResult);
+                DTSResponse result = client.EndExecuteFromCatalog(asyncResult);
 
                 LoggingUtil logging = new LoggingUtil();
 
@@ -710,10 +710,11 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
                     logging.Auditoria(String.Format("La ETL {0}, se ejecutó satisfactoriamente", eTLRemota.packageFileName), LoggingUtil.Prioridad.Baja, "ETLRemotasSAI", _info);
                 Proceso.eliminarProceso(idProcesoCF);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 if (idProcesoCF > 0)
                     Proceso.eliminarProceso(idProcesoCF);
+
             }
 
         }
@@ -742,6 +743,7 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
             {
                 if (idProcesoCV > 0)
                     Proceso.eliminarProceso(idProcesoCV);
+
             }
 
         }
@@ -962,6 +964,68 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
             return extraccionComision;
         }
 
+        /// <summary>
+        /// 2024-04-16 DAHG: Método para consultar el histórico de extracciones
+        /// </summary>
+        /// <returns></returns>
+        internal List<ExtraccionComision> ConsultarHistoricoExtraccion()
+        {
+            List<ExtraccionComision> listaExtracciones = new List<ExtraccionComision>();
+            ExtraccionComision extraccionComision = new ExtraccionComision()
+            {
+                id = 0,
+                usuario = "",
+                fecha = DateTime.MinValue,
+                estadoExtraccion_id = 0,
+                año = 0,
+                mes = 0,
+                dia = 0,
+                tipoLiquidacion = 0,
+                CodigoExt = ""
+            };
+            try
+            {
+                SqlConnection sqlConn = (SqlConnection)((EntityConnection)_dbcontext.Connection).StoreConnection;
+
+                using (sqlConn)
+                {
+                    string cmdtxt = "MAC_SP_CONSULTARHISTORICO_EXTRACCION";
+                    SqlCommand cmdReport1 = new SqlCommand(cmdtxt, sqlConn);
+                    cmdReport1 = new SqlCommand(cmdtxt, sqlConn);
+                    cmdReport1.CommandType = CommandType.StoredProcedure;
+
+                    cmdReport1.CommandTimeout = 0;//Timeout infinito
+                    cmdReport1.Connection.Open();
+                    SqlDataReader rta = cmdReport1.ExecuteReader();
+
+                    while (rta.Read())
+                    {
+                        extraccionComision = new ExtraccionComision()
+                        {
+                            id = int.Parse(rta["id"].ToString()),
+                            usuario = rta["usuario"].ToString(),
+                            fecha = DateTime.Parse(rta["fecha"].ToString()),
+                            estadoExtraccion_id = int.Parse(rta["estadoExtraccion_id"].ToString()),
+                            año = int.Parse(rta["año"].ToString()),
+                            mes = int.Parse(rta["mes"].ToString()),
+                            dia = int.Parse(rta["dia"].ToString()),
+                            tipoLiquidacion = int.Parse(rta["tipoLiquidacion"].ToString()),
+                            CodigoExt = rta["CodigoExt"].ToString(),
+                            nombre = rta["nombre"].ToString()
+                        };
+
+                        listaExtracciones.Add(extraccionComision);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return listaExtracciones;
+        }
+
         internal List<int> ValLiqPendientes()
         {
             List<int> filtEnProceso = new List<int>();
@@ -1114,40 +1178,44 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
                     res.Resultado = ResultadoOperacion.Exito;
                     #endregion
 
-                    #region PASO 04 - Ejecución ETL BH
-
-                    List<PackagesExecutionService.Variable> variablesBh = new List<PackagesExecutionService.Variable>();
-                    variablesGp.Add(new PackagesExecutionService.Variable() { Key = "anio", Value = rta031 });
-                    variablesGp.Add(new PackagesExecutionService.Variable() { Key = "CodigoExtraccion", Value = rta032 });
-                    variablesGp.Add(new PackagesExecutionService.Variable() { Key = "mes", Value = rta033 });
-
-                    ETLRemota eTLRemotaBh = etlsRemotas.Where(x => x.nombre == "EtlDatosBh").FirstOrDefault();
-
-                    using (PackagesExecutionServiceClient client = new PackagesExecutionServiceClient())
+                    
+                    if(rta031 != "" && rta033 != "")
                     {
-                        DTSResponse dtsResponse = client.ExecuteFromPackageFile(idApp, eTLRemotaBh.packageFileName, eTLRemota.packageConfigFileName, variablesBh.ToArray());
-                        rta04 = (!dtsResponse.Fail ? 0 : 7);
+                        #region PASO 04 - Ejecución ETL BH
+                        List<PackagesExecutionService.Variable> variablesBh = new List<PackagesExecutionService.Variable>();
+                        variablesBh.Add(new PackagesExecutionService.Variable() { Key = "anio", Value = rta031 });
+                        variablesBh.Add(new PackagesExecutionService.Variable() { Key = "CodigoExtraccion", Value = rta032 });
+                        variablesBh.Add(new PackagesExecutionService.Variable() { Key = "mes", Value = rta033 });
+
+                        ETLRemota eTLRemotaBh = etlsRemotas.Where(x => x.nombre == "EtlDatosBh").FirstOrDefault();
+
+                        using (PackagesExecutionServiceClient client = new PackagesExecutionServiceClient())
+                        {
+                            DTSResponse dtsResponse = client.ExecuteFromPackageFile(idApp, eTLRemotaBh.packageFileName, eTLRemota.packageConfigFileName, variablesBh.ToArray());
+                            rta04 = (!dtsResponse.Fail ? 0 : 7);
+                        }
+
+                        res.Resultado = ResultadoOperacion.Exito;
+                        #endregion
+
+                        #region PASO 05 - Finalización del proceso de Pago
+                        cmdtxt = "dbo.SAI_LevantarEtlGpyBH_Paso003";
+                        cmdReport1 = new SqlCommand(cmdtxt, sqlConn);
+                        cmdReport1.CommandType = CommandType.StoredProcedure;
+
+                        cmdReport1.Parameters.Add("idLiquidacion", SqlDbType.Int);
+                        cmdReport1.Parameters["idLiquidacion"].Value = liquidacionComisionId;
+
+                        cmdReport1.Parameters.Add("respuesta", SqlDbType.Int);
+                        cmdReport1.Parameters["respuesta"].Value = rta04;
+
+                        cmdReport1.CommandTimeout = 0;//Timeout infinito
+                        rta = cmdReport1.ExecuteNonQuery();
+                        cmdReport1.Connection.Close();
+                        res.Resultado = ResultadoOperacion.Exito;
+                        #endregion
                     }
 
-                    res.Resultado = ResultadoOperacion.Exito;
-                    #endregion
-
-                    #region PASO 05 - Finalización del proceso de Pago
-                    cmdtxt = "dbo.SAI_LevantarEtlGpyBH_Paso003";
-                    cmdReport1 = new SqlCommand(cmdtxt, sqlConn);
-                    cmdReport1.CommandType = CommandType.StoredProcedure;
-
-                    cmdReport1.Parameters.Add("idLiquidacion", SqlDbType.Int);
-                    cmdReport1.Parameters["idLiquidacion"].Value = liquidacionComisionId;
-
-                    cmdReport1.Parameters.Add("respuesta", SqlDbType.Int);
-                    cmdReport1.Parameters["respuesta"].Value = rta04;                    
-
-                    cmdReport1.CommandTimeout = 0;//Timeout infinito
-                    rta = cmdReport1.ExecuteNonQuery();
-                    cmdReport1.Connection.Close();
-                    res.Resultado = ResultadoOperacion.Exito;
-                    #endregion
                 }
                 res.Resultado = ResultadoOperacion.Exito;                    
             }
@@ -1277,14 +1345,47 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
 
         # region reprocesar liquidacion
 
-        internal ResultadoOperacionBD ReprocesarLiquidacion(string idApp, Dictionary<string, object> parametrosEtlCF, Dictionary<string, object> parametrosEtlCV, Dictionary<string, object> parametrosEtlAnulacion, int modeloId, short anio, byte mes, int liquidacionComisionId, byte tipoLiquidacionId, string usuario, int tipoEjec, InfoAplicacion info)
+        //internal ResultadoOperacionBD ReprocesarLiquidacion(string idApp, Dictionary<string, object> parametrosEtlCF, Dictionary<string, object> parametrosEtlCV, Dictionary<string, object> parametrosEtlAnulacion, int modeloId, short anio, byte mes, int liquidacionComisionId, byte tipoLiquidacionId, string usuario, int tipoEjec, InfoAplicacion info)
+        //{
+        //    ResultadoOperacionBD res = new ResultadoOperacionBD();
+
+        //    try
+        //    {
+        //        res = ExtractAnulacion(idApp, parametrosEtlAnulacion, liquidacionComisionId);
+        //        res = ExtractCf_CV(idApp, parametrosEtlCF, parametrosEtlCV, anio, mes, 1, liquidacionComisionId, tipoLiquidacionId, usuario, tipoEjec, info);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        res.RegistrosAfectados = 0;
+        //        res.MensajeError = "Error: " + ex.Message;
+        //        res.Resultado = ResultadoOperacion.Error;
+        //    }
+            
+
+
+        //    return res;
+        
+        //}
+
+        internal ResultadoOperacionBD ReprocesarLiquidacion(int idLiquidacion)
         {
             ResultadoOperacionBD res = new ResultadoOperacionBD();
-
             try
             {
-                res = ExtractAnulacion(idApp, parametrosEtlAnulacion, liquidacionComisionId);
-                res = ExtractCf_CV(idApp, parametrosEtlCF, parametrosEtlCV, anio, mes, 1, liquidacionComisionId, tipoLiquidacionId, usuario, tipoEjec, info);
+                String cmdtxt = "dbo.SAI_Reprocesar_liquidacion";
+                SqlConnection sqlConn = (SqlConnection)((EntityConnection)_dbcontext.Connection).StoreConnection;
+                SqlCommand cmdReport = new SqlCommand(cmdtxt, sqlConn);
+                cmdReport.CommandType = CommandType.StoredProcedure;
+                cmdReport.CommandTimeout = 0;
+                cmdReport.Parameters.Add("idLiquidacion", SqlDbType.Int);
+                cmdReport.Parameters["idLiquidacion"].Value = idLiquidacion;
+                using (sqlConn)
+                {
+                    cmdReport.Connection.Open();
+                    res.RegistrosAfectados = cmdReport.ExecuteNonQuery();
+                    cmdReport.Connection.Close();
+                }
+                res.Resultado = ResultadoOperacion.Exito;
             }
             catch (Exception ex)
             {
@@ -1292,11 +1393,7 @@ namespace ColpatriaSAI.Negocio.Componentes.Comision.Calculos
                 res.MensajeError = "Error: " + ex.Message;
                 res.Resultado = ResultadoOperacion.Error;
             }
-            
-
-
             return res;
-        
         }
 
         internal ResultadoOperacionBD ActualizaEstadoReprocesar(int idLiquidacion)

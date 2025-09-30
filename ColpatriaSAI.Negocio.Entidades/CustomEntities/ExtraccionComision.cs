@@ -16,5 +16,6 @@ namespace ColpatriaSAI.Negocio.Entidades.CustomEntities
 		public int dia { get; set; }
 		public int tipoLiquidacion { get; set; }
 		public string CodigoExt { get; set; }
+		public string nombre { get; set; }
 	}
 }

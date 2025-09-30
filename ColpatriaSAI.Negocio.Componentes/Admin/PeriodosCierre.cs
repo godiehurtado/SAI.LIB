@@ -109,6 +109,38 @@ namespace ColpatriaSAI.Negocio.Componentes.Admin
 
         }
 
+        public int CerrarMesAbierto(int companiaId, int mesCierre, int anioCierre)
+        {
+
+            EntityConnection entityConnection = (EntityConnection)contexto.Connection;
+            DbConnection storeConnection = entityConnection.StoreConnection;
+            DbCommand command = storeConnection.CreateCommand();
+            command.CommandText = "SAI_CerrarMesAbierto";
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.Add(new SqlParameter("compania", companiaId));
+            command.Parameters.Add(new SqlParameter("mesCierre", mesCierre));
+            command.Parameters.Add(new SqlParameter("anioCierre", anioCierre));
+
+            bool openingConnection = command.Connection.State == ConnectionState.Closed;
+
+            if (openingConnection) { command.Connection.Open(); command.CommandTimeout = 240; }
+
+            int result;
+
+            try
+            {
+                result = command.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (openingConnection && command.Connection.State == ConnectionState.Open) { command.Connection.Close(); }
+            }
+
+            return result;
+
+        }
+
         public int DeleteReprocesos(int mesCierre, int añoCierre)
         {
             EntityConnection entityConnection = (EntityConnection)contexto.Connection;

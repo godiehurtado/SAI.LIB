@@ -75,14 +75,14 @@
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\Librerias\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>C:\Windows\assembly\GAC_32\Microsoft.SqlServer.DTSRuntimeWrap\10.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSRuntimeWrap.dll</HintPath>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.SqlServer.DTSRuntimeWrap\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSRuntimeWrap.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SAI Debug\SAI\ColpatriaSAI.Negocio.Componentes\bin\Debug\Microsoft.SqlServer.ManagedDTS.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Data.Linq">
       <HintPath>..\Librerias\Remotion.Data.Linq.dll</HintPath>
@@ -266,17 +266,17 @@
     <None Include="Connected Services\PackagesExecutionService\ColpatriaSAI.Negocio.Componentes.PackagesExecutionService.DTSResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService.wsdl" />
-    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService.xsd">
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService11.wsdl" />
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService44.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService1.xsd">
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService45.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService2.xsd">
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService46.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService3.xsd">
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService47.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -286,9 +286,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\PackagesExecutionService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\PackagesExecutionService\configuration91.svcinfo" />
@@ -301,6 +298,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PackagesExecutionService\PackagesExecutionService11.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

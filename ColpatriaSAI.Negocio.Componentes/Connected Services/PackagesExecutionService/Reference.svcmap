@@ -18,15 +18,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://dc2tvdetl1:3078/PackagesExecutionService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:65522/PackagesExecutionService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PackagesExecutionService.xsd" MetadataType="Schema" ID="4a35fe62-d331-44ee-953a-e0e956590a14" SourceId="1" SourceUrl="http://dc2tvdetl1:3078/PackagesExecutionService.svc?xsd=xsd3" />
-    <MetadataFile FileName="PackagesExecutionService1.xsd" MetadataType="Schema" ID="0eee0013-0814-481e-a009-b1ca8c04c3f3" SourceId="1" SourceUrl="http://dc2tvdetl1:3078/PackagesExecutionService.svc?xsd=xsd0" />
-    <MetadataFile FileName="PackagesExecutionService.disco" MetadataType="Disco" ID="01f1c34c-c825-4b8f-aee7-24f60382643d" SourceId="1" SourceUrl="http://dc2tvdetl1:3078/PackagesExecutionService.svc?disco" />
-    <MetadataFile FileName="PackagesExecutionService2.xsd" MetadataType="Schema" ID="fd3505a0-047f-43af-a450-a8f1e5e95bb3" SourceId="1" SourceUrl="http://dc2tvdetl1:3078/PackagesExecutionService.svc?xsd=xsd2" />
-    <MetadataFile FileName="PackagesExecutionService3.xsd" MetadataType="Schema" ID="0d48daab-a3d0-45be-923a-b007f2bcbd8d" SourceId="1" SourceUrl="http://dc2tvdetl1:3078/PackagesExecutionService.svc?xsd=xsd1" />
-    <MetadataFile FileName="PackagesExecutionService.wsdl" MetadataType="Wsdl" ID="18369095-7af1-4b7a-83a4-a9506f840aff" SourceId="1" SourceUrl="http://dc2tvdetl1:3078/PackagesExecutionService.svc?wsdl" />
+    <MetadataFile FileName="PackagesExecutionService11.wsdl" MetadataType="Wsdl" ID="969ec936-ef20-404d-9e29-f44fcb83ec92" SourceId="1" SourceUrl="http://localhost:65522/PackagesExecutionService.svc?wsdl" />
+    <MetadataFile FileName="PackagesExecutionService44.xsd" MetadataType="Schema" ID="d7b03c3b-31c7-426b-a301-7bb95fcefbab" SourceId="1" SourceUrl="http://localhost:65522/PackagesExecutionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PackagesExecutionService45.xsd" MetadataType="Schema" ID="3989f326-9dbf-45e3-b941-dc8d20b50bfd" SourceId="1" SourceUrl="http://localhost:65522/PackagesExecutionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PackagesExecutionService11.disco" MetadataType="Disco" ID="ef77ee37-4bb0-4a3d-84b9-e7aa70015828" SourceId="1" SourceUrl="http://localhost:65522/PackagesExecutionService.svc?disco" />
+    <MetadataFile FileName="PackagesExecutionService46.xsd" MetadataType="Schema" ID="daf43330-ec83-4dbf-8631-bcdcb5767b27" SourceId="1" SourceUrl="http://localhost:65522/PackagesExecutionService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PackagesExecutionService47.xsd" MetadataType="Schema" ID="fb4806d5-65ad-4b96-b523-233f8c5b597a" SourceId="1" SourceUrl="http://localhost:65522/PackagesExecutionService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

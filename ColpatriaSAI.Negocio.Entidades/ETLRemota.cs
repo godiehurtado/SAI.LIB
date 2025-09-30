@@ -110,9 +110,24 @@ namespace ColpatriaSAI.Negocio.Entidades
         }
         private int _tipoETLRemota_id;
 
+        [DataMember]
+        public string projectName
+        {
+            get { return _projectName; }
+            set
+            {
+                if (_projectName != value)
+                {
+                    _projectName = value;
+                    OnPropertyChanged("projectName");
+                }
+            }
+        }
+        private string _projectName;
+
         #endregion
         #region Navigation Properties
-    
+
         [DataMember]
         public TipoETLRemota TipoETLRemota
         {
